@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xhr对象</title>
+</head>
+<body>
+<button onclick="fn1()"></button>
+<script>
+    //原生ajax实现：XMLHttpRequest
+    function fn1() {
+        //1 创建xhr对象
+        let xhr = new XMLHttpRequest();
+        //2 初始化xhr
+        xhr.open('get','http://localhost:3000/clazz');
+        //3 发送请求
+        xhr.send()
+        //4 注册回调函数，侦听返回结果
+        xhr.onload = function () {
+            //4.1 处理响应成功结果
+            let data = xhr.response
+            console.log(data)
+            console.log(JSON.parse(data))
+        }
+        xhr.onerror = function () {
+            console.log('请求失败')
+        }
+    }
+</script>
+</body>
+</html>

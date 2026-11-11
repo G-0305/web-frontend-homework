@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件传播</title>
+</head>
+<body>
+
+<div id="div1" style="width: 200px;
+height: 200px;background-color: red;">
+  <div id="div2" style="width: 100px;
+  height: 100px;background-color: blue;">
+    <button id="btn3">按钮3</button>
+  </div>
+</div>
+
+<br>
+<div id="div4" style="width: 200px;
+height: 200px;background-color: #1aff00;">
+  <div id="div5" style="width: 100px;
+  height: 100px;background-color: #ffbf00;">
+    <button id="btn6">按钮6</button>
+  </div>
+</div>
+
+<br>
+<div id="div7" style="width: 200px;
+height: 200px;background-color: #d900ff;">
+  <div id="div8" style="width: 100px;
+  height: 100px;background-color: #00f7ff;">
+    <button id="btn9">按钮9</button>
+  </div>
+</div>
+
+<script>
+  //事件传播方式
+  //冒泡：从里->外
+  document.getElementById("div1")
+    .addEventListener('click', function(){
+      console.log('红色div1被点击')
+    },false)
+  document.getElementById('div2')
+    .addEventListener('click', function(){
+      console.log('蓝色div2被点击')
+    })
+  document.getElementById('btn3')
+    .addEventListener('click', function(){
+      console.log('按钮3被点击')
+  })
+
+  //捕获：从外->里
+  document.getElementById("div4")
+    .addEventListener('click', function(){
+      console.log('绿色div4被点击')
+    },true)
+  document.getElementById('div5')
+    .addEventListener('click', function(){
+      console.log('黄色div5被点击')
+    },true)
+  document.getElementById('btn6')
+    .addEventListener('click', function(){
+      console.log('按钮6被点击')
+    },true)
+
+  //阻止冒泡
+  document.getElementById("div7")
+    .addEventListener('click', function(event){
+      event.stopPropagation() //阻止冒泡
+      console.log('紫色div7被点击')
+    },false)
+  document.getElementById('div8')
+    .addEventListener('click', function(event){
+      event.stopPropagation() //阻止冒泡
+      console.log('蓝色div8被点击')
+    })
+  document.getElementById('btn9')
+    .addEventListener('click', function(event){
+      event.stopPropagation() //阻止冒泡
+      console.log('按钮9被点击')
+    })
+
+</script>
+
+</body>
+</html>

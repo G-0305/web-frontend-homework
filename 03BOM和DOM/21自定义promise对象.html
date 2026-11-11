@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义promise对象</title>
+</head>
+<body>
+<button onclick="fn1()">按钮</button>
+<script>
+    function fn1() {
+        let promise = makePromise()
+        //使用promise的then，catch处理成功和失败的结果
+        promise.then(res => console.log(res))
+    }
+    function makePromise() {
+        let myPromise = new Promise((resolve, reject) => {
+            //Promise构造函数接收一个箭头函数
+            //箭头函数有两个形参
+            //resolve对象：包装程序执行的正确结果
+            //reject对象：包装程序执行的失败结果
+            //模拟业务
+            let flag = Math.random()
+            if(flag >=0.6) {
+                resolve('成功了。。。')
+            }else{
+                reject('失败了。。。。')
+            }
+        })
+        return myPromise
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location对象</title>
+</head>
+<body>
+
+<button onclick="fn1()">重新加载当前页面</button>
+<button onclick="fn2()">加载一个新的页面</button>
+<button onclick="fn3()">替换url1</button>
+<button onclick="fn4()">替换url2</button>
+<script>
+    function fn1() {
+        location.reload()
+    }
+    function fn2() {
+        //加载一个新页面
+        location.assign('http://www.czjtu.edu.cn')
+    }
+    function fn3() {
+        //替换当前url
+        location.replace('http://www.czjtu.edu.cn')
+    }
+    function fn4() {
+        //替换当前url
+        location.href = 'http://www.czjtu.edu.cn'
+    }
+</script>
+</body>
+</html>

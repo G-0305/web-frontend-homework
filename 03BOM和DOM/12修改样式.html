@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改样式</title>
+    <style>
+        .style1{
+            color: #ffffff;
+            background-color: #000000;
+        }
+        .style2{
+            color: #000000;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="" id="id1">沧州交通学院</h1>
+
+<button onclick="changeStyle()">修改样式1</button>
+
+<br>
+<h1 id="id2">沧州交通学院</h1>
+<button onclick="changeStyle2()">切换样式</button>
+
+<script>
+    function changeStyle1() {
+        //修改样式内联样式
+        let obj=document.getElementById('id1')
+        obj.style.color='#ffffff'
+        obj.style.backgroundColor='#000000'
+
+    }
+    function changeStyle2() {
+        let obj=document.getElementById('id2')
+        if(obj.className=='style1'){
+            obj.className='style2'
+        }else{
+            obj.className='style1'
+        }
+    }
+</script>
+
+</body>
+</html>

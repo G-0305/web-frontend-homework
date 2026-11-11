@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变元素内容</title>
+</head>
+<body>
+
+<h1 id = "id1">海滨学院</h1>
+<button onclick="changeTxt()">改变文本内容</button>
+<button onclick="changeHtml()">改变Html内容</button>
+<script>
+    function changeTxt(){
+        let obj = document.getElementById('id1');
+        obj.innerText =
+            '<a href="http://www.czjtu.edu.cn">沧州交通学院</a>'
+    }
+    function changeHtml(){
+        let obj = document.getElementById('id1');
+        obj.innerText =
+            '<a href="http://www.czjtu.edu.cn">沧州交通学院</a>'
+    }
+
+
+</script>
+
+
+</body>
+</html>

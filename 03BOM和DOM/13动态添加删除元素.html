@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加删除元素</title>
+</head>
+<body>
+
+<div id="div1">
+
+    <p>段落111111111111</p >
+</div>
+<p align="center">
+    <button onclick="add()">添加</button>
+    <button onclick="add()">添加</button>
+</p >
+
+<script>
+    function add() {
+        //创建一个新元素：p
+        let p = document.createElement('p');
+        p.innerText = '新加段落。。。。'
+        //往容器插入新元素
+        let obj = document.createElement('div1');
+        obj.appendChild(p)
+    }
+    function del(){
+        let  obj= document.createElement('div1');
+        let list = obj.querySelectorAll('p');
+        if(list.length > 0){
+            list.removeChild(list[list.length-1]);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会话存储</title>
+</head>
+<body>
+
+<a href="18-2会话存储2.html">转跳</a>
+
+<script>
+    //会话存储
+    //保存的数据，只维持本次会话中，会话结束，数据会被清空
+
+    sessionStorage.setItem('userName', '李四');
+    sessionStorage.setItem('obj', JSON.stringify({
+            name:'李四四',
+            age :20
+    }
+    ));
+
+</script>
+
+</body>
+</html>

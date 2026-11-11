@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>通过tag查找</title>
+</head>
+<body>
+<div id="div1">
+    <p>1111111111</p>
+    <p>2222222222</p>
+    <p>3333333333</p>
+</div>
+<p>444444444444</p>
+
+<button onclick="findByTag()">通过tag查找</button>
+
+<script>
+    function findByTag() {
+        // 获取页面中所有p标签
+        let list1 = document.getElementsByTagName('p');
+        for(let item of list1) {
+            console.log(item.innerText);
+        }
+
+        // 在div1内部查找p标签
+        let obj = document.getElementById('div1');
+        let list2 = obj.getElementsByTagName('p');
+        for(let item of list2) {
+            console.log(item.innerText);
+        }
+    }
+</script>
+</body>
+</html>

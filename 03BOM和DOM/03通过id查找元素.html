@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>通过id查找元素</title>
+</head>
+<body>
+
+<input type="text" id="idText">
+<button onclick="findById()">通过id查找</button>
+
+<script>
+    function findById() {
+        let obj = document.getElementById('idText');
+        console.log(obj.value)
+    }
+</script>
+
+</body>
+</html>

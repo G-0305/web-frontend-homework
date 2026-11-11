@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+<button onclick="fn1()">promise</button>
+<script>
+    function fn1() {
+        //fetch网络操作的api，执行时间可能较长（因此用promise机制实现）
+        //fetch返回的结果，包装成一个promise对象（里面有要的数据）
+        let obj = fetch('/mock/db.json')
+        //通过promise的链式调用
+        /**
+         obj.then(res => {
+         //通过json（）方法从响应中返回结果对象
+         let jsonres = res.json()
+         jsonres.then(json => {
+         //得到clazz数组
+         console.log(json)
+         })
+         })
+         .catch(err=>{
+         console.log(err)
+         })
+         **/
+        obj.then(res =>  res.json())
+            .then(json => console.log(json))
+
+
+    }
+</script>
+</body>
+</html>

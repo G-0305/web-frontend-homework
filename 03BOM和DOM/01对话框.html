@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对话框</title>
+</head>
+<body>
+
+<button onclick="open1()">提示框</button>
+<button onclick="open2()">确认框</button>
+<button onclick="open3()">输入框</button>
+<script>
+    function open1() {
+        //提示框
+        alert('提示框')
+    }
+    function open2() {
+        //确认框：两个按钮（确认、取消）
+        let result = confirm('确认删除该数据吗？')
+        if (result) {
+            //用户确认xxx事情
+            console.log('第一个分支',result)
+        }else{
+            console.log('第二个分支',result)
+        }
+    }
+    function open3() {
+        //输入框：接收用户输入的信息
+        let result = prompt('请输入姓名')
+        if (result) {
+            //处理输入
+            console.log(result)
+        } else {
+            console.log(result)
+        }
+    }
+</script>
+</body>
+</html>

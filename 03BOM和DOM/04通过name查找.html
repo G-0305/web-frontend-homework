@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过name查找</title>
+</head>
+<body>
+
+    <input type="radio" checked name="sex" value="0">男&nbsp;
+    <input type="radio"  name="sex" value="1">女&nbsp;
+    <input type="radio" name="sex" value="2">不知道
+    <button onclick="findName()">通过name查找</button>
+
+    <script>
+        function findByName(){
+            let list = document.getElementsByName('sex');
+            for (let item of list) {
+                if (item.checked) {
+                    console.log(item);
+                }
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

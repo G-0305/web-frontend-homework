@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过class查找</title>
+    <style>
+        .style1{
+            color: red;
+        }
+        .style2{
+            color: blue;
+        }
+        .style3{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <p class="style1"><span>1111111111</span></p>
+    <p class="style2">2222222222</p>
+    <p class="style3">3333333333</p>
+</div>
+<p class="style1">444444444444</p>
+<button onclick="findByClazz()">通过类名</button>
+
+<script>
+    function findByClazz() {
+        let list1 = document.getElementsByClassName("style1");
+        for (let item of list1) {
+            console.log(item.innerHTML);
+        }
+    }
+</script>
+</body>
+</html>

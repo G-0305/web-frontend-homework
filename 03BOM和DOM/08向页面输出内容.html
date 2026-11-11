@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向页面输出内容</title>
+</head>
+<body>
+
+<h1>hello</h1>
+<div id="div1">
+
+</div>
+
+
+<script>
+    //直接输出
+    document.writeln('你好!')
+
+    //写入元素
+    //创建一个元素
+    let obj = document.createElement('button');
+    obj.innerText = '按钮名称'
+    //把元素放进容器
+    let container = document.getElementById('div');
+    container.appendChild(obj);
+
+</script>
+</body>
+</html>

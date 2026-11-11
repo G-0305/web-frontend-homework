@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>querySelector</title>
+</head>
+<body>
+<div id="div1">
+    <p class="style1"><span>1111111111</span></p>
+    <p class="style2">2222222222</p>
+    <p class="style3">3333333333</p>
+</div>
+<p name="test2" class="style1">444444444444</p>
+<button onclick="findBySelector()">通过selector查找</button>
+<button onclick="findBySelectorAll()">通过selectorAll查找</button>
+
+<script>
+    function findBySelector() {
+        //id选择器
+        let obj1 = document.querySelector('#div1');
+        console.log(obj1.innerHTML);
+        //标记选择器
+        let obj2 = document.querySelector('p');
+        console.log(obj2.innerHTML);
+        //类选择器
+        let obj3 = document.querySelector('.style1');
+        console.log(obj3.innerHTML);
+        //元素name属性
+        let obj4 = document.querySelector('p[name="test2"]');
+        console.log(obj4.innerHTML);
+    }
+    function findBySelectorAll() {
+        //querySelector:返回符合条件的所有元素
+        let list1 = document.querySelectorAll('#div1');
+        for (let item of list1) {
+            console.log(item.innerHTML);
+        }
+        let list2 = document.querySelectorAll('p');
+        for (let item of list2) {
+            console.log(item.innerHTML);
+        }
+        let list3 = document.querySelectorAll('.style1');
+        for (let item of list3) {
+            console.log(item.innerHTML);
+        }
+        let list4 = document.querySelectorAll('p[name="test2"]');
+        for (let item of list4) {
+            console.log(item.innerHTML);
+
+        }
+    }
+</script>
+</body>
+</html>

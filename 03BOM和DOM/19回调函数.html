@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回掉函数</title>
+</head>
+<body>
+<script>
+    function printer(str){
+        console.log(str);
+    }
+
+    function fn1(fn){
+        console.log('执行自己代码11111111');
+        //模拟异步
+        setTimeout(function (){
+            fn('执行printer函数。。。。')
+        },3000)
+        console.log('执行自己代码22222222');
+    }
+
+</script>
+
+</body>
+</html>

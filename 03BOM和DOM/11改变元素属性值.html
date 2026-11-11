@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变元素属性值</title>
+</head>
+<body>
+< img src="https://computer.czjtu.edu.cn/images/jsjlogo.png"
+width="500" height="80">
+<button onclick="changeImg()">切换图片</button>
+
+
+<script>
+    function changeImg() {
+        let obj=document.getElementById("img1");
+        if(obj.src=='https://computer.czjtu.edu.cn/images/jsjlogo.png'){
+            obj.src=='https://em.czjtu.edu.cn/images/jglogo.png'
+            obj.with=400
+            obj.height=60
+        }else{
+            obj.src='https://computer.czjtu.edu.cn/images/jsjlogo.png'
+            obj.with=500
+            obj.height=80
+        }
+    }
+
+</script>
+</body>
+</html>
