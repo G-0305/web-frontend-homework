@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域和闭包</title>
+</head>
+<body>
+
+<script>
+    //全局作用域--全局变量
+    let a1 = 123
+    const a2 = false
+    var a3 = 'abc'
+
+    //函数局部作用域--局部变量
+    function fn1(){
+        let b1 = 456
+        let b2 = true
+        var b3 = 'zxc'
+
+
+        console.log(a1)  //a1--全局变量
+    }
+    //condole.log（b1，b2，b3）  变量超出作用域范围
+
+    //代码块作用域--局部变量
+    //使用let/const声明的变量具有块级作用域
+    //var声明的变量不具有块级作用域
+    {
+        let c1 = 789
+        let c2 = false
+        let c3 = 'zxc'
+
+    }
+    // console.log(c1,c2) //超出变量作用域范围
+    console.log(c3)
+
+    //闭包
+    //一个函数（fn3）和其引用的变量（a4）
+    //js将函数函数（fn3）和其引用的变量
+    //捆绑到一个的东西--叫做闭包
+    function fn4(){
+        let a4 = 123
+
+        function fn3 (){
+            console.log('在函数fn3使用a4：',a4)
+        }
+
+        return fn3
+    }
+
+    let fn3_1 = fn4()
+    fn3_1()
+</script>
+</body>
+</html>

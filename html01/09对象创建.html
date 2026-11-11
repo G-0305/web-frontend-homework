@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象创建</title>
+</head>
+<body>
+
+<script>
+    //使用字面量方式创建对象：{}
+    let obj1 = {}//空值对象
+    let obj2 = {x : 1, y: 2}
+    let obj3 = {
+        "main title":"JavaScript编程指南",
+        ['abc'+123]:'简介',
+        price:200,
+        author:{
+            name:'liu',
+            age:20
+        }
+    }
+
+    //基于构造函数创建对象
+    //内置构造函数：Array,Date,Math,...
+    let arr1 = new Array();
+    let date1 = new Date();
+    let map1 = new Map();
+
+    //自定义构造函数:首字母大写
+    function Person(name, age) {
+        //使用this把属性绑定到使用该构造函数创建对象上
+        this.name = name;
+        this.age = age;
+        this.study = function(){
+            console.log(`${this.name}正在学习。。。`);
+
+        }
+    }
+    let p1 = new Person('张三',20);
+    let p2 = new Person('李四',19);
+    p1.study();
+    p2.study();
+    console.log(p1);
+    console.log(p2);
+
+    //基于原型创建对象:以现在对象作为模板创建对象
+    //新对象继承原型的属性方法
+    let obj31 = {x : 1, y: 1}
+    let obj4 = Object.create(obj31);
+    obj4.a = 3;//自有属性
+    obj4.b = 4;
+    console.log(obj4.x);//继承属性
+    console.log(obj4.y);
+    console.log(obj4.a);//自有属性
+
+    //基于类（Class）创建对象
+    //
+    class User{
+        //构造器
+        constructor(name, age) {
+            //使用this把属性绑定到使用创建的对象上
+            this.name = name;
+            this.age = age;
+            this.study = function(){
+                console.log(`${this.name}正在学习。。。`)
+            }
+        }
+
+    }
+    let u1 = new User(`李四`,20);
+    let u2 = new User(`王五`,19);
+    u1.study();
+    u2.study();
+    console.log(u1);
+    console.log(u2);
+
+
+
+</script>
+
+</body>
+</html>

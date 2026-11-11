@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高阶函数</title>
+</head>
+<body>
+
+
+<script>
+    //高阶函数：函数的参数或者返回值是函数
+    //或者参数和返回值都是函数
+    //这样的函数就叫高阶函数
+
+    //高阶函数的作用：对以系列操作和值进行抽象
+
+    //使用高阶函数生成一系列类似功能的函数
+    function fn5(){
+        return x >5
+    }
+    function fn10(x){
+        return x >10
+    }
+    function fn100(x){
+        return x >100
+    }
+    //定义高阶函数：
+    // 接收一个要作为判断大小的基准数
+    //返回一个函数，这个函数的参数就是要和基准数进行比较的数
+    function makeFn(m){
+        return function (n){
+            return n > m
+        }
+    }
+    //使用高阶函数MakeFn生成和某个数进比较大小的函数
+    let greatThen5 = makeFn(5)
+    let result1 = greatThen5(6)//=>true
+    console.log(result1)
+    let result2 = greatThen5(3)//=>fals
+    console.log(result2)
+
+    const greatThen99 = makeFn(99)
+
+    //使用高阶函数包装/扩展现有函数的功能
+
+    //包装Math.max方法，得到一个新函数
+    //新包装既能求最大值，还可以打印日志购买和你
+
+    function addLog(f) {
+        return function (...args) {
+            //增加日志
+            console.log('传进来的参数', args)
+            //调用被包装好的函数f
+            let max = f(...args)
+            console.log('最大值为：', max)
+            return max
+        }
+    }
+    //使用高阶函数-->得到一个新函数
+    const maxByLog = addLog(Math.max)
+    let result = maxByLog(3,7,14,9,45,34,22)
+    console.log(result)
+
+
+
+</script>
+
+</body>
+</html>

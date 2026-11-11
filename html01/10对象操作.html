@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象操作</title>
+</head>
+<body>
+
+<script>
+    //查询对象属性值：使用圆点/【】运算符
+    let book={
+        "main title":'Javascript编程指南',
+        price: 200,
+        author: {
+            name:"傻瑄",
+            age:40
+        }
+    }
+    console.log(book.price);
+    console.log(book.author);
+    console.log(book["main title"]);
+
+    //设置属性
+    //如果原先已有同名属性：修改属性值
+    book.price = 100;
+    //如果原先没有该属性：新添加一个属性
+    book.version = 7
+    console.log(book)
+
+    //删除属性：delete:
+    // 只能删除自有的、configurable特性设置为true的属性
+    delete book.author
+    console.log(book)
+
+    //属性的configurable特性设置为false,不能删除
+    Object.defineProperty(book,'price',{
+        //默认值都是true
+        configurable:false,//属性不能删除、
+        // enumerable:true,
+        //writable:true
+    })
+    let result1=delete book.price;
+    console.log(result1);
+    console.log(book);
+
+
+    //继承属性不能删除
+    let obj1={x:1,y:1};
+    let obj2=Object.create(obj1);
+    obj2.a=3;
+    obj2.b=4;
+    console.log(obj2);
+    console.log('obj2.x=', obj2.x);
+    delete obj2.x;
+    console.log('obj2.x=', obj2.x);
+
+    //测试属性
+    //使用in检测某个属性是否可以使用
+    console.log('"x" in obj2',"x" in obj2);//true
+    console.log('"z" in obj2',"z" in obj2);//false
+
+    //使用hasOwnProperty():某个属性是否是自有属性
+    console.log('"x" is own obj2',obj2.hasOwnProperty("x"));//false
+    console.log('"a" is own obj2',obj2.hasOwnProperty("a"));//true
+
+    //使用propertyIsEnumerable()检测属性是否可以枚举
+    console.log('"x" is enum obj2',obj2.propertyIsEnumerable("x"));//false
+    console.log('"a" is enum obj2',obj2.propertyIsEnumerable("a"));//true
+
+    //枚举
+    //for-in
+    let obj3 = {x:1,y:1}
+    let obj4=Object.create(obj3);
+    obj4.a=2;//自有属性
+    obj4.b=3;
+    for(let item in obj4){
+        console.log(item)
+    }
+    //object.keys():返回自有属性
+    let arr1 = Object.keys(obj4);
+    console.log(arr1);
+
+    Object.defineProperties(obj4,"a",{
+        enumerable:false,
+    })
+    let arr2 = Object.keys(obj4);
+    console.log(arr2);//b
+
+    //对象扩展
+    //Object.assign()
+    //接收两个及两个以上对象作为参数
+    //会把第二个及其以上的对象属性复制到第一个对象上
+    //如果有同名的属性，则后面的属性值会覆盖前面的属性
+    let obj5 = {x:1,y:1}
+    let obj6 = {a:2,b:4}
+    let obj7 = {c:5,d:6,x:30}
+    Object.assign(obj5,obj6,obj7);
+    console.log(obj5);// x y a b c d
+
+    //扩展操作符（。。。）
+    let obj8 = {x:1,y:1,...obj6,...obj7}
+    console.log(obj8); // x y a b c d
+
+
+    //扩展操作符只对自有属性有效，不能扩展继承属性
+    let obj9 = Object.assign(obj6)
+    obj9.k=6;
+    obj9.m=7;
+
+    let obj10 = {e:8,f:9,...obj9}
+    console.log(obj10)
+
+    //对象序列化:把js转成json格式的字符串
+    let obj11 = {x:123,a:'abc',c:null,d:true,e:{x:1,y:1}};
+    let str1 = JSON.stringify(obj11);
+    console.log(str1);
+    console.log(typeof str1);
+
+    //反序列化：把json格式的字符串转成js对象
+    let str2 =
+        {
+            "a": 123,
+            "b": "abc",
+            "c": true
+        }
+
+    console.log(typeof str2);
+    let obj12 = JSON.parse(str2)
+    console.log(obj12);
+    console.log(typeof obj12);
+
+    //对象解构:把对象的属性值匹配到对应的变量上
+    let employee = {
+        name: '张三',
+        age:40,
+        salary:6500
+    }
+    //传统使用对象的方式
+    let empName = employee.name;
+    let empAge = employee.age;
+    console.log(empName);
+    console.log(empAge);
+    //对象解构：js根据变量每次和属性名称对比，进行赋值
+    let {name, age} = employee
+    console.log(name)
+    console.log(age)
+
+    let clazz = {
+        name: '软件2406',
+        desc:"简介"
+    }
+    //为了避免解构时，出现变量命名冲突，
+    //js支持再解构过程中，重命名变量
+    let {name:cName,desc:cDesc} = clazz;
+    console.log(cName);
+    console.log(cDesc);
+
+    //解构时，声明的变量和对象属性个数可以不匹配
+    //当声明变量在属性中不存在时，该变量不会被赋值--->undefined
+    //解构时,可以设置变量的默认值
+    //当有匹配的属性时，覆盖默认值
+    let {job = '工程师',salary = 5000} = employee
+    console.log(job);
+    console.log(salary);
+
+    //解构时，如果使用存在已有的变量进行解构赋值时
+    //需要使用()扩起解构语句
+    let aName,aDesc
+    ({name: aName,desc:aDesc}=clazz)
+    console.log(aName)
+    console.log(aDesc)
+
+
+
+</script>
+
+
+</body>
+</html>

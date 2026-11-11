@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表达式程序语句</title>
+</head>
+<body>
+
+<script>
+    //普通等==;会尝试对比数进行类型转换，在比较
+    console.log('123==123',123=='123')
+    //严格等===;不做类型转换，类型不一样直接返回false
+    console.log('123===123',123==='123');
+    //in操作符：判断左操作数是否位于右操作数中
+    let obj1 = {x:1,y:1}
+    console.log('"x" in obj1',"x" in obj1);
+    console.log('"z" in obj1',"z" in obj1);
+
+    //对于数值：判断给定的索引位置是否有值
+    let arr1 = [5,6,,7,8]
+    console.log('0 in arr1',0 in arr1);
+    console.log('2 in arr2',2 in arr1);
+
+    //instanceof:判断对象是否是某个类型
+    let d = new Date();
+    console.log('d is a Date ',d instanceof Date);
+    console.log('d is a object ',d instanceof Object);
+
+    //eval():可以运行字符串形式的js语句
+
+    eval('a=1;b=2;console.log(a+b);')
+
+    //for-in循环； 返回下标
+    let obj2 = {x:1,y:1};
+    for (let item in obj2) {
+        console.log(item + ': ' + obj2[item]);
+    }
+    let arr2 = [5,6,7,8]
+    for (let item in arr2) {
+        console.log(item + ': ' + arr2[item]);
+    }
+
+    //for-of,直接返回值
+    for (let item in arr2) {
+        console.log(item);
+    }
+
+    //with（）：一般用于把语句缩小到某个具体的对象范围
+    with (location){
+
+    }
+
+</script>
+</body>
+</html>

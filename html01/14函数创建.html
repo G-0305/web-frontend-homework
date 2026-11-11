@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数创建</title>
+</head>
+<body>
+<script>
+    //声明式定义：function
+    //使用声明式定义的函数：变量（函数）声明提升
+    console.log(fn1(1,2))
+
+    function fn1(a,b){
+        return a+b
+    }
+
+    //2 函数表达式：可以把函数赋给一个变量。通过调用调用函数
+    //函数表达式可以去掉函数名称--->匿名函数
+    const fn2_1 = function (a,b){
+        return a+b
+    }
+    console.log(fn2_1(2,3))
+
+
+    //3 为了进一步简化匿名函数的写法
+    //使用=>代替function关键字--->叫箭头函数
+    let fn3 = (a,b)=>{
+        return a+b
+    }
+    //根据箭头个数的形参个数以及函数体语句个数不一样
+    //有多种写法
+    //3.1只有一个形参，可以去掉（）
+    let fn4 = x => {
+        return x*x
+    }
+
+    //3.2如果函数体只有一个语句，可以去掉{}
+    //同时如果有返回值，可以去掉return
+    const fn5 = (a,b) => a+b
+
+    //3.3 如果没有形参，（）必须保留
+    const fn6 = ()=>3.14
+
+    //3.4两个及以上的形参，（）必须保留
+    //函数体两个及以上语句，{}必须保留
+    //同时，如果有返回值，return不能去掉
+    const fn7 = (a,b) =>{
+        console.log(a,b)
+        return a+b
+    }
+
+    //4使用Function（）创建函数
+    //Function（）接收任意个数
+    //最后一个参数：定义的函数体
+    //倒数n-1到第一个参数：
+    const fn8 =
+        new Function('a','b','console.log(a,b);return a+b')
+    console.log(fn8(4,5))
+</script>
+
+</body>
+</html>

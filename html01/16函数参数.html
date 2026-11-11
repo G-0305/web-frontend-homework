@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数参数</title>
+</head>
+<body>
+<script>
+    //01js函数没有重载，js不会检查函数类型、个数
+    function fn1(a,b){
+        return a+b;
+    }
+    let result1 = fn1(1,2)
+    console.log(result1)
+    let result2 = fn1(1,2,3)
+    console.log(result2)
+    let result3 = fn1(1)
+    console.log(result3)
+    //如果同名的函数，后定义的函数会覆盖前面的函数
+</script>
+</body>
+</html>

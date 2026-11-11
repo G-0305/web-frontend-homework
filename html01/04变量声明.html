@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量声明</title>
+</head>
+<body>
+
+<script>
+//1 let 关键字
+//1.1 let声明的变量不能重复声明
+let var1 = 123;
+//let var = 123; //=>语法错误
+//1.2 let/var声明变量时，未初始化 自动获得undefined值
+let var2;
+console.log('var2='+var2); //=>undefined
+
+//2 const: 声明常量
+const PI = 3.1415926535;
+//const PI = 3.14; //=>语法错误
+
+
+//如果使用const声明一个常量对象，仅限制直接修饰对象本省，对象的属性可以修改
+const obj1 = {
+    a:1,
+    b:2,
+}
+console.log(obj1)
+// obj1 = {
+//     a:3,
+//     b:4,
+// } 这是错误的，不能直接修改常量对象
+//可以修改常量对象的属性值
+obj1.a=5;
+obj1.b=6;
+console.log(obj1);
+
+
+//v3 var:不在建议使用
+//var声明的变量可以重复声明
+var var3 = 123;
+var var3 = 'abc'
+//var声明的变量只有全局作用域和函数局部作用域
+//在顶级代码的位置声明的变量-->全局作用域
+//函数内部声明的变量-->函数局部作用域
+function fn1(){
+    var var4 = 123;
+}
+//console.log(var4);//==>报变量为声明的错误
+//var没有块级作用域；会造成全局变量污染
+{
+    var var5 = 123;
+}
+console.log('var5='+var5);
+//在函数局部作用域或代码中，如果变量未经声明，直接使用
+//会暴露成全局变量
+function fn2(){
+    var6 = 123;
+}
+fn2()
+console.log('var6='+var6);
+//使用var声明
+//js运行是会把声明部分提升到变量作用
+function fn3(){
+    let var7 = 123;
+    console.log(var8);
+
+
+    var var8 = 123;
+    //js运行fn3函数时，会扫描整个函数代码
+    //会把var声明的变量以及到function声明的函数
+    //声明部分（var var8）会提升到fn函数的顶部
+    //赋值语句还在原来位置（var8 = 123）
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>

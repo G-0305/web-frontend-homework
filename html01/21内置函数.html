@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内置函数</title>
+</head>
+<body>
+
+ <input type="text" id="expr">
+ <button onclick="call()">计算</button>
+ <br>
+ <span id="result"></span>
+
+ <br><br>
+ <button onclick="start1()">开始</button>
+ <button onclick="stop1()">停止</button>
+ <div id="time1">0</div>
+
+ <br><br>
+ <button onclick="start2()">开始</button>
+ <button onclick="stop2()">停止</button>
+ <div id="time2">0</div>
+
+<script>
+    //eval
+    function call() {
+        //取表达式
+        let expr = document.getElementById('expr').value;
+        //使用eval执行字符串表达式
+        let result = eval(expr);
+        //输出结果
+        document.getElementById('result').innerHTML = result;
+    }
+    //setTimeout:在指定时间后,执行某个代码
+    let x =0
+    let meter1
+    function count1(){
+        //增1
+        x = x+1;
+        //往页面写内容
+        document.getElementById('time1').innerText = x
+        //在指定时间间隔后，继续执行cunt1()
+        meter1=setTimeout('count1()',1000)
+    }
+    function start1(){
+        count1()
+    }
+    function stop1(){
+        clearTimeout(meter1)
+    }
+
+    //setInterval:每隔指定的时间，执行指定的代码
+    let y=0
+    let meter2
+    function count2(){
+        y = y+1;
+        document.getElementById('time2').innerText = y
+    }
+    function start2(){
+        //启动setInterval
+        meter2 = setInterval('count2()',1000)
+    }
+    function stop2(){
+        clearInterval(meter2)
+    }
+
+
+
+</script>
+
+</body>
+</html>

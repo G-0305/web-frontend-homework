@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数调用</title>
+</head>
+<body>
+
+
+<script>
+    //1作为函数执行
+    function fn1(a,b){
+        return a + b
+    }
+    let result1 = fn1(1,2)
+    console.log(result1)
+
+    //2 函数作为对象的属性：以方法的形式执行
+    let obj1 = {
+        name:'张三',
+        age:20,
+        study: function (){
+            console.log(`${this.name}正在学习。。。`)
+        }
+    }
+    obj1.study()
+
+    //3 函数调用成构造函数-->用于创建对象
+    function User(){
+        this.name = '李四'
+        this.age = 19
+        this.study = function (){
+            console.log(`${this.name}正在学习。。。`);
+        }
+    }
+    let user1 = new User();
+    user1.study()
+
+    //4 使用函数对象的call/apply方法间接调用函数
+    function printInfo(name,age,job){
+        console.log(name)
+        console.log(age)
+        console.log(job)
+    }
+    //call:传入多个参数
+    //第一个参数：传入函数执行的上下文环境
+    //（这里是window对象-->使用this代替）
+    //第二个之后的参数：传给调用函数的实参
+    printInfo.call(this,'张三',19,'学生')
+
+    //apply:接收两个参数
+    //第一个参数：传入函数执行的上下文环境
+    //（这里是window对象-->使用this代替）
+    //第二个参数，是一个数组：传给调用函数的实参
+    printInfo.apply(this,['李四',20,'工程师'])
+
+        //5 立即调用的函数表达式 FFIE
+        (function (a,b){
+            console.log(a+b)
+        })(6,7);
+
+</script>
+
+</body>
+</html>

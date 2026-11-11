@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型</title>
+</head>
+<body>
+
+<script>
+
+    //1 Undefined类型，只有一个值：undefined
+    //声明了变量，但未初始化,返回一个undefined
+    let var1;
+    console.log('var1 = '+var1);
+    console.log('var1 = '+(typeof var1));
+    //未声明变量，使用typeof求值--->undefined
+    console.log('var2 = '+(typeof var2));
+
+    //undefined值在布尔运算中，结果为false
+    let var3;
+    if(var3){
+
+    }else {
+        console.log('var3 = '+var3);
+    }
+
+
+    //Null类型：只有一个值null
+    //主要用于对象定义：该对象又未马上初始化
+    let obj1 = null;//==>obj1是一个对象，未初始化
+    console.log('obj1 = '+obj1);
+    console.log('typeof obj1 = '+(typeof obj1));
+
+    let obj2 = {};  //obj2是一个对象，并且已经初始化
+    console.log('obj2 = ');
+    console.log(obj2);
+
+
+
+    //undefined值和null值相等
+    console.log('var3 ==obj1 :' + (var3 == obj1));
+
+
+    //null值在布尔运算中，表示false
+    if(obj1){
+
+    }else{
+        console.log('obj1 = '+obj1);
+    }
+
+    if(obj2){
+        console.log('obj2 -1 ');
+    }else {
+        console.log('obj2 -2' );
+    }
+
+    //Boolean类型：ture/false
+    let bool1 = true;
+    let bool2 = false;
+    //非空字符串可以转换成true
+    let str1 = "123abc"
+    console.log('Boolean(str1) = '+new Boolean(str1));
+    let str2 = ''
+    console.log('Boolean(str2) = '+new Boolean(str2));
+
+    //非0/NaN的数值==>true
+    let num1 = 123;
+    console.log('Boolean(num1) = ' + new Boolean(num1));
+    console.log('Boolean(0) = ' + new Boolean(0));
+    let result1 = 0/0;
+    console.log('result1 = '+result1);
+    console.log('Boolean(NaN)=' + new Boolean(NaN));
+    //非null对象为true
+    let obj3 = {}
+    console.log('Boolean(obj3)='+new Boolean(obj3));
+    //非null对象为false
+    let obj4 = null;
+    console.log('Boolean(obj4)='+new Boolean(obj4));
+    //undefined值==>false
+    let var4 ;
+    console.log('Boolean(var4) = '+new Boolean(var4));
+
+   //Number类型
+    console.log('0.1+0.2= '+(0.1+0.2));
+    console.log(999999999999999) //长度超过15位会超出精度
+
+    console.log('0/0='+(0/0));
+    console.log('1/0='+(1/0));
+    //或者，尝试把非数值类型的字符串转换成数值
+    console.log('Number("123)='+Number("123"));
+    console.log('Number("abc")='+Number("abc"));
+    //isNaN():判断一个变量：是否不是一个数值
+    let num11 = 123;
+    console.log('isNaN(num11)='+isNaN(num11));//=>false
+    let num12 = '123';
+    console.log('isNaN(num12)='+isNaN(num12));//=>false
+    let num13 = 'abc';
+    console.log('isNaN(num13)='+ isNaN(num13));//=>true
+
+    let num14 = true;
+    console.log('isNaN(num14)='+isNaN(num14));//=>false
+
+
+    //String类型：
+    //3种定义方式
+    let str11 = "abc";
+    let str12 = 'abc';
+    let str13 = `abc`;//反引号
+
+    //使用反斜杠进行特殊字符的转义
+
+    let str14 =
+        `<div>
+            <div>
+                <a></a>
+            </div>
+        </div>`
+    ;
+    console.log(str14)
+    //字符串的插值运算
+    let str15 =
+        `<div>
+            <div>
+                <a>${str11},${num11+200}</a>
+            </div>
+        </div>`
+    ;
+    console.log(str15)
+    //Object类型，其他派生对象的基类
+    //提供一些列属性和方法
+    let obj11 = new Object();
+    obj11['age'] = 20
+    //obj11.age = 20
+    obj11.sex = '男'
+    console.log(obj11);
+
+    //Symbol
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

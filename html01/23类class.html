@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类</title>
+</head>
+<body>
+
+<script>
+    //类定义方式
+    //类声明
+    class MyClass {
+
+    }
+    //类表达式
+    let myClass2 = class {
+
+    }
+
+    //类定义内容
+    class Animal{
+        //构造器
+        constructor(name) {
+            //在构造器中，可以定义类的实例成员
+            this.name = name;
+            this.whoIs=function (){
+                console.log(this.name)
+            }
+            this.whereIs = function (){
+                console.log('这是一个实例方法');
+            }
+        }
+        //在类块可以定义原型方法-->原型成员
+        whereIs(){
+            console.log('这是一个原型方法')
+        }
+        //访问器属性：getter/setter属性
+        set type(type){
+            this.__type = type;
+        }
+        get type(){
+            return this.__type;
+        }
+
+        //静态成员：static
+        static eat(){
+            console.log('正在吃对象...')
+        }
+    }
+
+    //使用类创建对象
+    let obj1 = new Animal('小白兔');
+    //访问实例成员
+    console.log(obj1.name);
+    obj1.whoIs()
+    //访问原型成员
+    Animal.prototype.whereIs()
+    //访问器属性
+    obj1.type = '哺乳动物'
+    console.log(obj1.type)
+    //静态成员
+    Animal.eat()
+    console.log(obj1.name)
+
+
+
+
+</script>
+
+</body>
+</html>

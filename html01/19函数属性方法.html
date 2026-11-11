@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数属性方法</title>
+</head>
+<body>
+
+<script>
+    //属性
+    function fn(a,b,c){
+        console.log(a,b,c)
+    }
+    console.log(fn1.name)     //=>fn1
+    console.log(fn1.length)   //=>3
+    console.log(fn1.prototype)//=>对象
+
+    //方法
+    //bind方法：可以把函数绑定到对象上
+    //返回一个新函数
+    let obj1 = {
+        x:1
+    }
+    function fn2(a){
+        //this就是传给bind方法的对象
+        //x就是传进来对象的属性
+        return this.x+a
+    }
+    const fnNew = fn2.bind(obj1)
+    let result = fnNew(4) //=>5
+    console.log(result)
+
+
+
+</script>
+
+
+</body>
+</html>

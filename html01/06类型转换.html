@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型转换</title>
+</head>
+<body>
+
+
+<script>
+    //隐式转换
+    let str1 = 'abc'
+    let num1 = 123
+    let bool1 = true
+    let bool2 = false
+
+    console.log('str1+num1=', str1+num1)
+    console.log('str1+bool1=', str1+bool1)
+    console.log('str1+bool2=', str1+bool2)
+    console.log('num1+bool1=', num1+bool1)
+    console.log('num1+bool2=', num1+bool2)
+    console.log('bool1+bool2=', bool1+bool2)
+
+    console.log('Number("12")=',Number("12"))
+    console.log('Number("")=',Number(""))
+    console.log('Number("0o12")=',Number("0o12"))
+    console.log('Number("0x12")=',Number("0x12"))
+    console.log('Number("abc")=',Number("abc"))
+    console.log('Numeber("true")=',Boolean("true"))
+    console.log('Number("false")=',Number("false"))
+    console.log('Number("null")=',Number("null"))
+    console.log('Number("undefined")=',Number("undefined"))
+    console.log('parseInt("  123abc")=',Number("  123abc"))
+
+    //""-->NaN
+    console.log('parseInt("")=',Number(""))
+    //
+    console.log('parseInt("12")=',parseInt("12"))
+    console.log('parseInt("0o12")=',parseInt("0o12"))
+    console.log('parseInt("0x12")=',parseInt("0x12"))
+    console.log('parseInt("123.21")=',parseInt("123.21"))
+    console.log('parseInt("10",2)=',parseInt("10",2))
+
+
+
+</script>
+</body>
+</html>

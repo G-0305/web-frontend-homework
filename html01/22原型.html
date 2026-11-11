@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+
+<script>
+    //原型：使用用于给其他对象共享属性（方法)的对象
+    //js中。所有对象都可以作为其他对象的原型
+    let human = {
+        name:'张三',
+        age:20,
+        height:170
+    }
+    //所有原型创建一个新对象
+    let human1 = Object.create(human)
+    console.log(human1,name)//继承属性
+    console.log(human1.age)
+    console.log(human1.height)
+    let human2 = Object.create(human)//继承所有的属性
+
+    //原型的访问
+    //获取原型的方法
+    //1 通过getPrototypeOf()获取
+    let obj1 = Object.getPrototypeOf(human1)
+    console.log(obj1)//=>human
+
+    //2 也可以使用隐藏的__proto__属性获取
+    let obj2 = {
+        x:1,
+        y:2
+    }
+    //使用字面量创建的对象
+    //其默认原型为构造函数Object()的原型
+    console.log(obj2.__proto__)//=>Object()的原型
+
+    //设置对象的原型
+    //1 setPrototyprOf()
+    //修改obj2的原型
+    Object.setPrototypeOf(obj2,human)
+    console.log(obj2.name)
+    console.log(obj2.age)
+
+    //2 使用隐藏属性__proto__设置对象原型
+    let obj3 = {
+
+    }
+    obj3.__proto__ = obj2
+    console.log(obj3.name)
+    console.log(obj3.a)
+
+    //构造函数与原型
+    //每个函数都有一个prototype属性，指向函数对象的原型
+    //构造函数的原型里面有一个constructor属性，指向构造函数本身
+    function Person() {
+
+    }
+    //构造函数的原型
+    console.log('构造函数的原型',Person.prototype)//=>{}
+    Person.prototype.name = '张三'
+    Person.prototype.age = 19
+    Person.prototype.sex = '男'
+    console.log('构造函数的原型',Person.prototype)//=>{3个属性}
+    //通过构造函数创建的对象，继承构造函数的原型的属性方法
+    let p1 = new Person()
+    //p1的原型就是Person()的原型
+    //p1.__proto__==Person.prototype
+    console.log(p1.__proto__==Person.prototype)//true
+    //能访问构造函数的原型的属性访问
+    console.log(p1.name)//属性继承
+
+    //构造函数，对象实例，原型之间的关系
+    //构造函数有一个原型
+    //构造函数的原型有一个constructor属性，指向构造函数
+    //对象实例，有构造函数的原型创建，可以通过__proto__获取对象的原型
+    //对象实例和构造函数之间没有有之间关系
+    console.log(Person.prototype.constructor)//=>Person()
+    console.log(p1.__proto__.constructor)//=>Person()
+
+    //字面量创建的对象,默认原型是Object()的原型
+    let obj10 = {}
+    console.log(obj10.__proto__.constructor)//=>Object()
+
+    //原型链：原型的原型，构成一个链
+    //作用：js通过原型链实现对象的属性（方法）的访问路径
+    //当一个js对象访问一个属性（方法）时
+    //先判断对象本身是否有该属性，如果没有，则查找对象原型的属性
+    //如果还没有，继续往上查找，如果都没有则返回
+    //
+    //
+
+
+
+</script>
+
+</body>
+</html>

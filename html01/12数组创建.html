@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组创建</title>
+</head>
+<body>
+<script>
+
+    //1 字面量方式：[]
+    let arr1 = []
+    let arr2 = [1,2,3]
+    let arr3 = [1,'abc',null,undefined,true,{},[1,2]]
+    //数组可以没有元素-->稀疏数组
+    let arr4 = [1,,3,,5] //长度为五的数组
+    console.log(arr4.length)
+
+    //2 通过构造函数Array()
+    //2.1 参数为0个
+    let arr5 = new Array()//=>[]
+    //2.2传一个整数作为参数
+    let arr6 = new Array()//创建长度为4的数组
+    console.log(arr6.length)
+    //2.3 传两个及以上的整数作为参数，或者非整数的类型
+    let arr7 = new Array(3,4)
+    let arr8 = new Array('a')
+    //3 扩展操作符 创建新数组
+    let arr9 = [1,2,3,...arr7]//=>[1,2,3,4]
+    let arr10 = [...'12fuidcba']
+    //4通过工厂方法创建数组
+    //4.1Arry.of()
+    let arr11 = Array.of() //=>[]
+    let arr12 = Array.of(4) //=>[4]
+    let arr13 = Array.of(3,4) //=>[3,4]
+
+    //4.2Array.from():从一个现有数组或可迭代的对象创建一个新数组
+    let arr14 = Array.from(arr13) //=>[3,4]
+    let arr15 = Array.from('abcd') //=>['a','b','c','d']
+    //可以接受第二个参数（是一个函数）
+    //from()方法使用第二个参数（函数）处理第一个函数（数组或可迭代对象）
+    //处理结果作为新数组的元素
+    let arr16 = [1,2,3,4,5]
+    let arr17 = Array.from(arr16,x=>x*x)//[1,4,9,16,25]
+    console.log(arr17)
+
+    //多维数组
+    let books = new Array(4) //创建一个长度为4的数组
+    //往books的每一个位置放进一个长度为2的数组
+    books[0] = new Array(2)
+    books[1] = new Array(2)
+    books[2] = new Array(2)
+    books[3] = new Array(2)
+    //往内层数组放数据
+    books[0][0] = '书名'
+    books[0][1] = 'JavaScript编程'
+
+    books[1][0] ='价格'
+    books[1][1] = 80
+
+    books[2][0] = '出版社'
+    books[2][1] = ''
+
+    books[3][0] = '出版时间'
+    books[3][1] = ''
+
+    //取数据
+    for(let i=0; i<books.length; i++){
+        for(let j=0; j<books[i].length; j++){
+            console.log(books[i][j])
+        }
+    }
+
+    //数组操作
+    //读取：[下标]
+    let arr18 = [1,2,3,4,5]
+    console.log(arr18[3]) //=>4
+    //修改：[修改]
+    arr18[0] = 'a'
+    console.log(arr18)
+    //写入
+    arr18[7] = 'b' //=>['a',2,3,4,5,,,'b']
+    console.log(arr18)
+    //删除delete
+    delete arr18[2] //=>['a',2,,4,5,,,'b']
+    console.log(arr18)
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+
+<script>
+    //1 显示的原型继承
+    //1.1 使用Object.setPrototypeOf()方法
+    //修改对象的原型，改变对象继承关系
+    let obj1 = {
+        x:1,
+        y:1
+    }
+    console.log('obj1的默认原型', obj1.__proto__)
+    let obj2 = {
+        x:3,
+        y:4
+    }
+    console.log('obj2的默认原型', obj2.__proto__)
+    //修改obj1的原型
+    Object.setPrototypeOf(obj1, obj2)
+    console.log('修改后obj的原型',obj1.__proto__)
+    console.log(obj1.a)//继承属性
+
+    //1.2使用Object.creat()方法，从现有对象创建一个新对象
+    //新对象继承现有对象的属性方法
+    let obj3 = {
+        a:300,
+        b:400
+    }
+    let obj4 = Object.create(obj3)
+    console.log('obj4的原型', obj4.__proto__)
+    console.log(obj4.a)
+
+    //2 隐式原型继承
+    function SuperType(){
+        this.name = '父类型'
+        this.action = function(){
+            console.log(this.name + '的行为')
+        }
+    }
+
+    function SubType(){
+        this.subName = '子类型'
+        this.subAction = function(){
+            console.log(this.subName+'的行为')
+        }
+    }
+    //SubType()的默认原型===>{}
+    console.log('SubType()的默认原型',SubType.prototype)
+    let sub1 = new SubType()
+    sub1.subAction()
+    //通过修改SubType()的原型
+    //SubType()的原型，指向父类型的一个实例
+    SubType.prototype = new SuperType()
+    //再使用sunType()创建一个对象,这个对象的继承关系就会跟着改变
+    let sub2 = new SubType() //sub2的原型===>SuperType()创建的
+    console.log('sub2的原型',sub2.__proto__)
+    sub2.subAction()
+    sub2.action() //继承自父类型SuperType的实例
+    //3 class通过extends继承
+    class Animal{
+        constructor(name){
+            this.speed = 0
+            this.name = name
+        }
+        run(speed){
+            this.speed = speed
+            console.log(`${this.name}跑步速度为${this.speed}`)
+        }
+        stop(){
+            this.speed = 0
+            console.log(`${this.name}停止了${this.speed}`)
+        }
+    }
+    //子类继承父类
+    class Rabbit extends Animal{
+        hide(){
+            console.log(`${this.name}藏起来了`)
+        }
+    }
+    let rabbit = new Rabbit('小白兔')
+    rabbit.run(5)//继承
+    rabbit.hide()//自有
+    rabbit.stop()//继承
+
+
+</script>
+
+</body>
+</html>
